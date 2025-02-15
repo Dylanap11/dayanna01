@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #ffe6e9;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .contenido {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 192, 203, 0.3);
+            border-radius: 15px;
+            margin: 20px;
+            border: 2px solid rgba(255, 182, 193, 0.5);
+        }
+        .navegacion {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: rgba(255, 182, 193, 0.9);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6b8b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff4d6d;
+            transform: scale(1.05);
+        }
+        .btn:disabled {
+            background-color: #ffb6c1;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .pagina {
+            font-size: 18px;
+            margin: 10px;
+            color: #ff4d6d;
+            font-weight: bold;
+        }
+        .pregunta {
+            font-size: 24px;
+            font-style: italic;
+            color: #ff4d6d;
+            margin-bottom: 30px;
+        }
+        .opciones {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        .btn-opcion {
+            padding: 15px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #ff6b8b;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-opcion:hover {
+            transform: scale(1.1);
+            background-color: #ff4d6d;
+        }
+        #btnNo {
+            position: relative;
+        }
+        .mensaje-exito {
+            font-size: 24px;
+            font-style: italic;
+            color: #ff4d6d;
+            margin-top: 20px;
+            display: none;
+        }
+        .imagen-cinna {
+            max-width: 150px;
+            margin: 10px;
+            display: inline-block;
+        }
+        .imagenes-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .mensaje-pagina {
+            font-size: 18px;
+            font-style: italic;
+            color: #ff4d6d;
+            line-height: 1.6;
+            margin: 30px auto;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .corazones {
+            font-size: 24px;
+            margin: 20px 0;
+            text-align: center;
+            animation: latido 1.5s infinite;
+        }
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Estilo para los corazones de fondo */
+        .corazon-fondo {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.3;
+            z-index: -1;
+            animation: flotar 20s linear infinite;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+        .corazon-fondo:hover {
+            opacity: 0.8;
+        }
+        .mensaje-amor {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 182, 193, 0.9);
+            padding: 20px 40px;
+            border-radius: 25px;
+            font-size: 24px;
+            font-style: italic;
+            color: white;
+            display: none;
+            animation: aparecer 0.5s ease-out;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        @keyframes aparecer {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido" id="contenido">
+        <div class="corazones">❤️ 💖 💝</div>
+        <div class="imagenes-container">
+            <img src="https://i.pinimg.com/originals/8c/d6/94/8cd6940ef9f3a4e6f6f9de54fd3c4a6e.png" alt="Cinnamoroll" class="imagen-cinna">
+            <img src="https://i.pinimg.com/originals/91/5d/a3/915da3957800a0558b8dd5878fd37897.png" alt="Kuromi" class="imagen-cinna">
+            <img src="https://i.pinimg.com/originals/8c/d6/94/8cd6940ef9f3a4e6f6f9de54fd3c4a6e.png" alt="Cinnamoroll" class="imagen-cinna">
+        </div>
+        <h2 class="pregunta">¿Quieres ser mi novia?</h2>
+        <div class="opciones">
+            <button class="btn-opcion" onclick="respuestaSi()">Sí</button>
+            <button class="btn-opcion" id="btnNo" onclick="moverBoton()">No</button>
+        </div>
+        <p class="mensaje-exito" id="mensajeExito">Ya sabía bot </p>
+        <div class="corazones">💝 💖 ❤️</div>
+    </div>
+
+    <div class="navegacion">
+        <button onclick="paginaAnterior()" class="btn" id="btnAnterior" disabled>Anterior</button>
+        <span class="pagina">Página <span id="paginaActual">1</span> de <span id="totalPaginas">3</span></span>
+        <button onclick="paginaSiguiente()" class="btn" id="btnSiguiente">Siguiente</button>
+    </div>
+
+    <script>
+        let paginaActual = 0;
+        const totalPaginas = 2;
+
+        // Función para inicializar cuando carga la página
+        window.onload = function() {
+            actualizarBotones();
+            document.getElementById('totalPaginas').textContent = '3';
+            document.getElementById('paginaActual').textContent = '1';
+            crearCorazones();
+        }
+
+        function crearCorazones() {
+            const corazones = ['❤️', '💖', '💝', '💕', '💗', '💓', '💘', '💞'];
+            const contenedor = document.body;
+
+            // Crear el mensaje
+            const mensaje = document.createElement('div');
+            mensaje.className = 'mensaje-amor';
+            mensaje.textContent = 'Te amo Dayanna ❤️';
+            contenedor.appendChild(mensaje);
+
+            for (let i = 0; i < 50; i++) {
+                const corazon = document.createElement('div');
+                corazon.className = 'corazon-fondo';
+                corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDelay = Math.random() * 40 + 's';
+                corazon.style.opacity = Math.random() * 0.4 + 0.1;
+                
+                corazon.onclick = function() {
+                    mensaje.style.display = 'block';
+                    setTimeout(() => {
+                        mensaje.style.display = 'none';
+                    }, 1500);
+                };
+                
+                contenedor.appendChild(corazon);
+            }
+        }
+
+        function actualizarBotones() {
+            document.getElementById('paginaActual').textContent = paginaActual + 1;
+            document.getElementById('btnAnterior').disabled = paginaActual === 0;
+            document.getElementById('btnSiguiente').disabled = paginaActual === 2;
+
+            // Actualizar contenido según la página
+            const contenido = document.getElementById('contenido');
+            if (paginaActual === 0) {
+                contenido.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                        <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                        <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                        <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                    </div>
+                    <h2 class="pregunta">¿Quieres ser mi novia?</h2>
+                    <div class="opciones">
+                        <button class="btn-opcion" onclick="respuestaSi()">Sí</button>
+                        <button class="btn-opcion" id="btnNo" onclick="moverBoton()">No</button>
+                    </div>
+                    <p class="mensaje-exito" id="mensajeExito">Ya sabía bot </p>
+                    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                        <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                        <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                        <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                    </div>
+                `;
+            } else if (paginaActual === 1) {
+                contenido.innerHTML = `
+                    <div style="display: flex; align-items: start; gap: 20px; margin-bottom: 20px;">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                            <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                            <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                            <img src="imagenes/dylan2.jpg" alt="Dylan" style="width: 300px; border-radius: 15px;">
+                        </div>
+                        <div>
+                            <p class="mensaje-pagina">Quiero comenzar diciéndote que me haces muy feliz. Gracias por tu regalito, me encantó. Este es el mío, espero que te guste.</p>
+                            <p class="mensaje-pagina">Eres una niña muy linda, creo que lo sabes. Me encanta tu forma de ser, tu forma de expresarte, tu forma de reír, tu forma de quejarte de Carol y la forma en que me tratas. Me hace sentir tan feliz y especial.</p>
+                            <p class="mensaje-pagina">Me hace tan feliz saber que puedo contar contigo siempre, que te puedo contar mi día. Si me siento mal, eres mi apoyo incondicional, y siempre lo he tenido claro. Quiero que sepas que también soy tu apoyo incondicional, que en cualquier cosa que tú necesites, yo voy a estar ahí para apoyarte. Y si todo el mundo está en tu contra, pues seremos los dos contra el mundo. Nunca te voy a dejar solita, mi amor.</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                            <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                            <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                <img src="imagenes/dylan3.jpg" alt="Dylan" style="width: 300px; border-radius: 15px;">
+                                <p class="mensaje-pagina" style="font-size: 16px; margin: 0; padding: 10px;">En estas fotos puedes ver que en mis ojos se refleja la felicidad de estar contigo, pero creo que sabes que el motivo eres tú y que me haces demasiado feliz.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (paginaActual === 2) {
+                contenido.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 150px 1fr 150px; gap: 20px; align-items: start;">
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                            <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                            <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 30px; padding: 0 20px;">
+                            <div style="display: flex; gap: 30px; align-items: start;">
+                                <img src="imagenes/dylan4.jpg" alt="Dylan" style="width: 250px; height: 250px; object-fit: cover; border-radius: 15px;">
+                                <p class="mensaje-pagina" style="margin: 0;">Quiero hacer tantas cosas contigo que nunca he sentido que la distancia afecte, porque quiero hablar contigo, quiero ver animes contigo, quiero ver películas, disfrutar de un picnic como tú querías. También hay cosas que, aunque la gente ve con muchas adversidades, siento que nosotros siempre buscamos la solución antes que el problema, y eso me encanta.</p>
+                            </div>
+                            
+                            <div style="display: flex; gap: 30px; align-items: start;">
+                                <p class="mensaje-pagina" style="margin: 0;">Sé que hay cosas que solo el tiempo sabrá cómo se desarrollarán, pero te lo dije una y otra vez: no importa cuánto tenga que esperar para estar contigo, lo haré sin desesperar. Eres la niña que siempre quise en mi vida, y ahora que te tengo, no pienso perderte.</p>
+                                <img src="imagenes/dylan5.jpg" alt="Dylan" style="width: 300px; border-radius: 15px;">
+                            </div>
+                            
+                            <p class="mensaje-pagina" style="text-align: center; font-size: 20px; margin-top: 10px;">Sé que no soy el mejor expresándome, pero este es mi intento de decirte que te amo y que no hay nadie más con quien quiera pasar toda mi vida si no es contigo.</p>
+                            
+                            <div style="display: flex; justify-content: center; margin-top: 10px;">
+                                <img src="imagenes/a.jpg" alt="Imagen A" style="width: 200px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <img src="imagenes/kuromi.png" alt="Kuromi" style="width: 150px;">
+                            <img src="imagenes/melody.png" alt="Melody" style="width: 150px;">
+                            <img src="imagenes/cinnamoroll 1.webp" alt="Cinnamoroll" style="width: 150px;">
+                        </div>
+                    </div>
+                `;
+            } else if (paginaActual === 3) {
+                contenido.innerHTML = `
+                    <!-- Página 3 vacía -->
+                `;
+            }
+        }
+
+        function paginaSiguiente() {
+            if (paginaActual < 2) {
+                paginaActual++;
+                actualizarBotones();
+            }
+        }
+
+        function paginaAnterior() {
+            if (paginaActual > 0) {
+                paginaActual--;
+                actualizarBotones();
+            }
+        }
+
+        function moverBoton() {
+            const btn = document.getElementById('btnNo');
+            const contenedor = document.querySelector('.contenido');
+            
+            // Generar posición aleatoria dentro del contenedor
+            const maxX = contenedor.clientWidth - btn.clientWidth;
+            const maxY = contenedor.clientHeight - btn.clientHeight;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btn.style.position = 'absolute';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        function respuestaSi() {
+            document.querySelector('.pregunta').style.display = 'none';
+            document.querySelector('.opciones').style.display = 'none';
+            document.getElementById('mensajeExito').style.display = 'block';
+            
+            // Crear y mostrar la imagen más cuadrada
+            const imagen = document.createElement('img');
+            imagen.src = 'imagenes/dylan.jpg';
+            imagen.style.width = '250px';         // Ancho reducido
+            imagen.style.height = '250px';        // Alto igual al ancho para hacerla cuadrada
+            imagen.style.objectFit = 'cover';     // Para que la imagen cubra el espacio sin deformarse
+            imagen.style.margin = '20px auto';
+            imagen.style.display = 'block';
+            imagen.style.borderRadius = '15px';   // Bordes redondeados
+            document.getElementById('contenido').appendChild(imagen);
+            
+            // Hacer que el mensaje y la imagen desaparezcan después de 2 segundos
+            setTimeout(() => {
+                document.getElementById('mensajeExito').style.display = 'none';
+                imagen.style.display = 'none';
+            }, 2000);
+
+            // Avanzar a página 1 después de 3 segundos
+            setTimeout(() => {
+                paginaActual = 1;
+                actualizarBotones();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
